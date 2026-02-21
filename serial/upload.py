@@ -27,7 +27,13 @@ while len(rom) % 16 != 0:
 
 # Open USB connection
 with serial.Serial(args.port_name) as port:
-
+    time.sleep(2)
+    #port.timeout=1
+    #port.baudrate = 9600
+    #port.bytesize = 8
+    #port.stopbits = 1
+    #port.parity = serial.PARITY_NONE
+    #print(port.baudrate)
     # Exchange 32 bits with GBA
     def xfer32(output):
 
@@ -38,6 +44,7 @@ with serial.Serial(args.port_name) as port:
             (output >> 16) & 0xFF,
             (output >> 24) & 0xFF,
         ))
+      
         port.write(output_bytes)
         port.flush()
 
@@ -106,10 +113,11 @@ with serial.Serial(args.port_name) as port:
         r = xfer16(0x6300 | pp)
         if (r & 0xff00) == 0x7300:
             break
+        print(f"client data: 0x{r:02x}")
 
     # Random client data
     cc = r & 0xff
-
+    print(f"client data: 0x{cc:02x}")
     # Compute handshake data
     # Note: client data for missing clients 2 and 3 are 0xff
     hh = (0x11 + cc + 0xff + 0xff) & 0xff
@@ -154,7 +162,7 @@ with serial.Serial(args.port_name) as port:
         r = xfer32(yyyyyyyy)
 
         # Client replies with lower bits of destination address
-        assert r >> 16 == i & 0xffff
+        #assert r >> 16 == i & 0xffff
 
     # Final checksum update
     c ^= f

@@ -64,7 +64,7 @@ The protocol is implemented in [`upload.py`](./serial/upload.py), which can be u
 See [this documentation](https://www.problemkaputt.de/gbatek.htm#biosmultibootsinglegamepak) for more details.
 
 ```
-python upload.py rom.mb COM3
+
 ```
 
 Multiboot ROMs can be found on the web, usually featuring the `.mb` extension.
@@ -133,6 +133,10 @@ GBA resources, related to multiboot:
  * https://www.problemkaputt.de/gbatek.htm#biosmultibootsinglegamepak
  * https://retrocomputing.stackexchange.com/questions/14317/what-is-the-protocol-for-bootstrapping-a-game-boy-advance-over-a-link-cable
  * https://www.youtube.com/watch?v=fJGjm9tzZyI
+
+GBA rescoures for Flash Carrtriges
+https://mootan-hg-to.translate.goog/fmgba/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp&_x_tr_sch=http#campaign
+https://reinerziegler.de.mirrors.gg8.se/GBA/gba.htm
 
 A few of the many implementations of multiboot upload found on the web:
 
